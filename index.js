@@ -16,9 +16,8 @@ app.use(bodyParser.json())
 
 //API RANDOM NSFW
 app.get("/api/random/nsfw/:filename", async (req, res) => {
-    const fiturName = fs.readdirSync("./database/nsfw/").map((x) => x.split(".json"))
+try{
     const filename = req.params.filename
-    if (!fiturName.includes(filename)) return res.json(status404)
     const database = JSON.parse(readFileSync("./database/nsfw/" + filename + ".json"))
     const data = database[Math.floor(Math.random() * database.length)]
     res.json({
@@ -27,14 +26,14 @@ app.get("/api/random/nsfw/:filename", async (req, res) => {
     "result": data 
     })
     console.log("Success")
+} catch {res.json(status404)}
 })
 
 
 //API RANDOM KATA
 app.get("/api/random/kata/:filename", async (req, res) => {
-    const fiturName = fs.readdirSync("./database/kata-kata/").map((x) => x.split(".json"))
+try{
     const filename = req.params.filename
-    if (!fiturName.includes(filename)) return res.json(status404)
     const database = JSON.parse(readFileSync("./database/kata-kata/" + filename + ".json"))
     const data = database[Math.floor(Math.random() * database.length)]
     res.json({
@@ -43,14 +42,14 @@ app.get("/api/random/kata/:filename", async (req, res) => {
     "result": data 
     })
     console.log("Success")
+} catch {res.json(status404)}
 })
 
 
 //API RANDOM STICKER
 app.get("/api/random/sticker/:filename", async (req, res) => {
-    const fiturName = fs.readdirSync("./database/sticker/").map((x) => x.split(".json"))
+try{
     const filename = req.params.filename
-    if (!fiturName.includes(filename)) return res.json(status404)
     const database = JSON.parse(readFileSync("./database/sticker/" + filename + ".json"))
     const data = database[Math.floor(Math.random() * database.length)]
     res.json({
@@ -59,14 +58,14 @@ app.get("/api/random/sticker/:filename", async (req, res) => {
     "result": data 
     })
     console.log("Success")
+} catch {res.json(status404)}
 })
 
 
 //API RANDOM ANIME
 app.get("/api/random/anime/:filename", async (req, res) => {
-    const fiturName = fs.readdirSync("./database/anime/").map((x) => x.split(".json"))
+try{
     const filename = req.params.filename
-    if (!fiturName.includes(filename)) return res.json(status404)
     const database = JSON.parse(readFileSync("./database/anime/" + filename + ".json"))
     const data = database[Math.floor(Math.random() * database.length)]
     res.json({
@@ -75,14 +74,14 @@ app.get("/api/random/anime/:filename", async (req, res) => {
     "result": data 
     })
     console.log("Success")
+} catch {res.json(status404)}
 })
 
 
 //API RANDOM GAME
 app.get("/api/random/game/:filename", async (req, res) => {
-    const fiturName = fs.readdirSync("./database/game/").map((x) => x.split(".json"))
+try{
     const filename = req.params.filename
-    if (!fiturName.includes(filename)) return res.json(status404)
     const database = JSON.parse(readFileSync("./database/game/" + filename + ".json"))
     const data = database[Math.floor(Math.random() * database.length)]
     if (filename == "asahotak") {
@@ -185,6 +184,7 @@ app.get("/api/random/game/:filename", async (req, res) => {
     })
     }
     console.log("Success")
+} catch {res.json(status404)}
 })
 
 
